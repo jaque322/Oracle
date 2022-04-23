@@ -1,6 +1,7 @@
 import java.util.*;
 
-public class Collections {
+
+public class CollectionsClass {
     public static void main(String[] args) {
 
         Product p2 = new Drink("tea");
@@ -21,9 +22,9 @@ public class Collections {
 //second part
         menu.add(p1);
         menu.add(p2);
-        menu.add(2,null);
-        menu.add(3,p1);
-        menu.add(2,p1);
+        menu.add(2, null);
+        menu.add(3, p1);
+        menu.add(2, p1);
         menu.set(0, p2);
         menu.add(4, null);
         int index = menu.indexOf(p2);
@@ -38,7 +39,7 @@ public class Collections {
 
         Deque<Product> dmenu = new ArrayDeque<>();
         Product nullProduct = dmenu.pollFirst();
-        System.out.println("null product  "+nullProduct);
+        System.out.println("null product  " + nullProduct);
         dmenu.offerFirst(dp1);
         dmenu.offerLast(new Product("jansel"));
         dmenu.offerFirst(dp2);
@@ -58,11 +59,38 @@ public class Collections {
         boolean hasTea = items.containsKey(mp2);
         boolean hasTwo = items.containsValue(Integer.valueOf(2));
         Integer quantity = items.get(mp2);
-        System.out.println("valor devuelto map "+quantity);
+        System.out.println("valor devuelto map " + quantity);
         Iterator<Product> iterator = dmenu.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next().getName());
         }
+//****************************************************Other collection behavior*************************************
+        //forma 1
+        List<Product> omenu = new ArrayList<>();
+        omenu.add(new Food("Cake"));
+        omenu.add(new Drink("Tea"));
+        omenu.add(new Food("Cookie"));
+        omenu.add(new Food("Ania"));
+//        Product[] arrray = new Product[2];
+//        arrray = omenu.toArray(arrray);
+//        System.out.println("array dimension "+arrray.length);
+//        omenu.removeIf(new RemoveLongProductsName());
+//        System.out.println("dimension despues de usar predicate should be 1 "+omenu.size());
+
+        //*******************************************************Collection Clases *****************************************
+        //de la forma 1 si agregas omnu no funciona
+        System.out.println("sorted Elements");
+        Collections.sort(omenu);
+        Utils.showList(omenu);
+        System.out.println("reversed elements");
+        Collections.reverse(omenu);
+        Utils.showList(omenu);
+        System.out.println("Shuffle Elements");
+        Collections.shuffle(omenu);
+        Utils.showList(omenu);
+        System.out.println("Fill Collection");
+        Collections.fill(omenu,new Product("jansel"));
+        Utils.showList(omenu);
     }
 
 
